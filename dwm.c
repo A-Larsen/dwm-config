@@ -2258,7 +2258,7 @@ zoom(const Arg *arg)
 int
 main(int argc, char *argv[])
 {
-    system("/home/nyquist/.config/dwm/startup");
+    system("/home/nyquist/.config/suckless/dwm/startup");
 	if (argc == 2 && !strcmp("-v", argv[1]))
 		die("dwm-"VERSION);
 	else if (argc != 1)
