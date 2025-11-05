@@ -56,6 +56,7 @@
 #define HEIGHT(X)               ((X)->h + 2 * (X)->bw)
 #define TAGMASK                 ((1 << LENGTH(tags)) - 1)
 #define TEXTW(X)                (drw_fontset_getwidth(drw, (X)) + lrpad)
+#define SETDMENUMON(m)          m[0] = '0' + selmon->num
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
@@ -1247,9 +1248,15 @@ nametag(const Arg *arg) {
 	char *p, name[MAX_TAGNAME_LEN];
 	FILE *f;
 	int i;
+	char dmenumon[2];
+	char cmd[25];
+
+	SETDMENUMON(dmenumon);
+	memset(cmd, 0, 25);
+	sprintf(cmd, "dmenu -m %s < /dev/null", dmenumon);
 
 	errno = 0; // popen(3p) says on failure it "may" set errno
-	if(!(f = popen("dmenu < /dev/null", "r"))) {
+	if(!(f = popen(cmd, "r"))) {
 		fprintf(stderr, "dwm: popen 'dmenu < /dev/null' failed%s%s\n", errno ? ": " : "", errno ? strerror(errno) : "");
 		return;
 	}
@@ -1719,7 +1726,7 @@ void
 spawn(const Arg *arg)
 {
 	if (arg->v == dmenucmd)
-		dmenumon[0] = '0' + selmon->num;
+		SETDMENUMON(dmenumon);
 	if (fork() == 0) {
 		if (dpy)
 			close(ConnectionNumber(dpy));
