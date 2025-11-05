@@ -1,0 +1,3 @@
+* switching windows
+  if you use 'Meta+tab' instead of 'meta+{number}' then it will save
+  the 'Meta+Ctrl+{number}' windows for the current tab
