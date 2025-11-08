@@ -6,6 +6,7 @@
 static const unsigned int borderpx  = 4;        /* border pixel of windows */
 /* static const unsigned int borderpx  = 0;        /1* border pixel of windows *1/ */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const char panel[][20]       = { "xfce4-panel", "Xfce4-panel" }; /* name & cls of panel win */
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -31,8 +32,7 @@ static const char *colors[][3]      = {
 #define MAX_TAGNAME_LEN 14		/* excludes TAG_PREPEND */
 #define TAG_PREPEND "%1i:"		/* formatted as 2 chars */
 #define MAX_TAGLEN 16			/* altogether */
-static char tags[][MAX_TAGLEN] = { "1:", "2:", "3:", "4:", "5:", "6:", "7:", "8:", "9:" };
-/* static char tags[][MAX_TAGLEN] = { "1:", "2:", "3:", "4:", "5:"}; */
+static char tags[][MAX_TAGLEN] = { "1:", "2:", "3:", "4:", "5:"};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -49,6 +49,7 @@ static const Rule rules[] = {
 	/* { "SpeedCrunch",     NULL,       NULL,       0,            1,           -1 }, */
 	{ "Firefox",         NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "urxvt",            NULL,       NULL,       0,            1,           -1 },
+    { panel[1],   NULL,       NULL,       (1 << 9) - 1, 1,           -1 },
 };
 
 /* layout(s) */
