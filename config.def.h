@@ -3,7 +3,7 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 4;        /* border pixel of windows */
+static const unsigned int borderpx  = 5;        /* border pixel of windows */
 /* static const unsigned int borderpx  = 0;        /1* border pixel of windows *1/ */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const char panel[][20]       = { "xfce4-panel", "Xfce4-panel" }; /* name & cls of panel win */
@@ -44,11 +44,13 @@ static const Rule rules[] = {
 	{ "clonemon",            NULL,       NULL,       0,            1,           -1 },
 	/* { "ncal",            NULL,       "ncal",       0,            1,           -1 }, */
 	{NULL,            NULL,       "ncal",       0,            1,           -1 },
-	{NULL,            NULL,       "SpeedCrunch",       0,            1,           -1 },
+	{NULL,            NULL,       "SpeedCrunch",       (1<<9) - 1,            1,           -1 },
 	{NULL,            NULL,       "VisualBoyAdvance",       0,            1,           -1 },
 	/* { "SpeedCrunch",     NULL,       NULL,       0,            1,           -1 }, */
 	{ "Firefox",         NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "urxvt",            NULL,       NULL,       0,            1,           -1 },
+	{NULL,            NULL,       "htop",       (1<<9) - 1,            1,           -1 },
+	{NULL,            NULL,       "pulsemixer",       (1<<9) - 1,            1,           -1 },
     { panel[1],   NULL,       NULL,       (1 << 9) - 1, 1,           -1 },
 };
 

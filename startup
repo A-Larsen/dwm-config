@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# xrandr --output eDP-1 --off --output HDMI-A-1-0 --mode 2560x1080 --rate 60
-dunst &
+dunst & # for notification
 xrandr --output eDP-1 --auto --output HDMI-A-1-0 --auto --above eDP-1
 # redshift -P -O 4000 &
 pulseaudio &
