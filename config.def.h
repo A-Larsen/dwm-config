@@ -4,16 +4,11 @@
 
 /* appearance */
 static const unsigned int borderpx  = 5;        /* border pixel of windows */
-/* static const unsigned int borderpx  = 0;        /1* border pixel of windows *1/ */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const char panel[][20]       = { "xfce4-panel", "Xfce4-panel" }; /* name & cls of panel win */
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-/* static const char *fonts[]          = { "monospace:size=14" }; */
-/* static const char dmenufont[]       = "monospace:size=14"; */
-/* static const char *fonts[]          = { "monospace:size=12" }; */
-/* static const char dmenufont[]       = "monospace:size=12"; */
 static const char *fonts[]          = { "monospace:size=14" };
 static const char dmenufont[]       = "monospace:size=14";
 static const char col_gray1[]       = "#222222";
@@ -39,19 +34,17 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	/* { "Gimp",            NULL,       NULL,       0,            1,           -1 }, */
-	{ "clonemon",            NULL,       NULL,       0,            1,           -1 },
-	/* { "ncal",            NULL,       "ncal",       0,            1,           -1 }, */
-	{NULL,            NULL,       "ncal",       0,            1,           -1 },
-	{NULL,            NULL,       "SpeedCrunch",       (1<<9) - 1,            1,           -1 },
-	{NULL,            NULL,       "VisualBoyAdvance",       0,            1,           -1 },
-	/* { "SpeedCrunch",     NULL,       NULL,       0,            1,           -1 }, */
-	{ "Firefox",         NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "urxvt",            NULL,       NULL,       0,            1,           -1 },
-	{NULL,            NULL,       "htop",       (1<<9) - 1,            1,           -1 },
-	{NULL,            NULL,       "pulsemixer",       (1<<9) - 1,            1,           -1 },
-    { panel[1],   NULL,       NULL,       (1 << 9) - 1, 1,           -1 },
+	/* class      instance    title               tags mask     isfloating   monitor */
+	{ "Gimp",     NULL,       NULL,                 0,            1,           -1 },
+	{ "clonemon", NULL,       NULL,                 0,            1,           -1 },
+	{NULL,        NULL,       "ncal",               0,            1,           -1 },
+	{NULL,        NULL,       "SpeedCrunch",        0,            1,           -1 },
+	{NULL,        NULL,       "VisualBoyAdvance",   0,            1,           -1 },
+	{ "Firefox",  NULL,       NULL,                 1 << 8,       0,           -1 },
+	{ "urxvt",    NULL,       NULL,                 0,            1,           -1 },
+	{NULL,        NULL,       "htop",               (1<<9) - 1,   1,           -1 },
+	{NULL,        NULL,       "pulsemixer",         (1<<9) - 1,   1,           -1 },
+    { panel[1],   NULL,       NULL,                 (1 << 9) - 1, 1,           -1 },
 };
 
 /* layout(s) */
@@ -83,82 +76,19 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-/* static const char *termurxvt[]  = { "urxvtc", "-pe", "tabbedex", NULL }; */
-/* static const char *termcmd[]  = { "urxvtc", "-pe", "tabbedex", NULL }; */
-/* static const char *termcmd[]  = { "tabbed", "-r", "2", "st", "-w", "'1'", "-e", "zsh", NULL }; */
-/* static const char *termcmd[]  = { "tabbed", "-r", "2", "st", "-e", "zsh", NULL }; */
-/* static const char *termcmd[]  = {"st-open", NULL}; */
-/* static const char *termcmd[]  = {"st", NULL}; */
 static const char *termcmd[]  = {"/usr/bin/alacritty", NULL};
-/* static const char *termcmd[]  = {"gnome-terminal", NULL}; */
-/* static const char *termcmd[]  = {" qterminal", NULL}; */
-/* static const char *termcmd[]  = {"stterm", NULL}; */
-/* static const char *termcmd[]  = { "tabbed", "st", "-w", "''", "-e", "zsh", NULL }; */
-/* static const char *termcmd[]  = {"alacritty", NULL}; */
-/* static const char *termcmd[]  = {"qterminal", NULL}; */
-static const char *mountcmd[]  = { "mount-dev", NULL };
-static const char *volupcmd[]  = { "dwm_set_volume_up" , NULL };
 static const char *voldowncmd[]  = { "dwm_set_volume_down" , NULL };
-static const char *volmutecmd[]  = { "dwm_set_volume_mute_toggle" , NULL };
 static const char *flameshotcmd[]  = { "flameshot", "gui", NULL };
-static const char *comptontogglecmd[]  = { "comptontoggle", NULL };
-static const char *firefoxcmd[]  = { "firefox", NULL };
-/* static const char *surfcmd[]  = { "tabbed",  "surf", "-e", NULL }; */
-static const char *surfcmd[]  = { "surf-open", NULL };
-static const char *chromiumcmd[]  = { "brave", NULL };
-static const char *blanktermcmd[]  = { "blank_urxvt", NULL };
-static const char *mpdnextcmd[]  = { "mpdctl", "next", NULL };
-static const char *mpdprevcmd[]  = { "mpdctl", "prev", NULL };
-static const char *mpdtogglecmd[]  = { "mpdctl", "toggle", NULL };
-static const char *mpdstopcmd[]  = { "mpdctl", "stop", NULL };
-static const char *mpdstartcmd[]  = { "mpd", NULL };
-static const char *mpdkillcmd[]  = { "killall", "mpd", NULL };
-static const char *brightnessupcmd[]  = {"/home/nyquist/bin/brightness", "up", "10", NULL };
-static const char *brightnessdowncmd[]  = {"/home/nyquist/bin/brightness", "down", "10", NULL };
 static const char *speedcmd[]  = { "systemctl", "suspend", NULL };
-static const char *audioNext[]  = { "playerctl", "next", NULL };
-static const char *audioPrev[]  = { "playerctl", "previous", NULL };
-static const char *audioPlay[]  = { "playerctl", "play-pause", NULL };
-static const char *audioStop[]  = { "playerctl", "stop", NULL };
-static const char *spaawncalculator[]  = { "/usr/bin/speedcrunch", NULL };
-/* static const char *audioPause[]  = { "playerctl", "pause", NULL }; */
 
 #include "movestack.c"
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ 0,             XF86XK_AudioRaiseVolume,  spawn,          {.v = volupcmd } },
 	{ 0,             XF86XK_AudioLowerVolume,  spawn,          {.v = voldowncmd } },
-	{ 0,             XF86XK_Calculator,  spawn,          {.v = spaawncalculator} },
-	{ 0,        XF86XK_MonBrightnessUp,   spawn,          {.v = brightnessupcmd } },
-	{ 0,        XF86XK_MonBrightnessDown, spawn,          {.v = brightnessdowncmd } },
-	/* { MODKEY|ShiftMask|ControlMask,	XK_m,      spawn,          {.v = volmutecmd } }, */
-	{ 0,	         XF86XK_AudioMute,         spawn,          {.v = volmutecmd } },
-	{ MODKEY|AltMask,               XK_m,      spawn,          {.v = mountcmd } },
 	{ MODKEY|ControlMask,           XK_s,      spawn,          {.v = flameshotcmd } },
-	{ MODKEY|ControlMask,           XK_f,      spawn,          {.v = firefoxcmd } },
-	{ MODKEY|ControlMask,           XK_b,      spawn,          {.v = surfcmd } },
-	{ MODKEY|ControlMask,           XK_g,      spawn,          {.v = chromiumcmd } },
-	{ MODKEY|AltMask|ControlMask,   XK_c,      spawn,          {.v = comptontogglecmd } },
-	{ MODKEY|AltMask|ControlMask,   XK_b,      spawn,          {.v = blanktermcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ 0,                     XF86XK_AudioNext, spawn,          {.v = audioNext } },
-	{ 0,                     XF86XK_AudioPrev, spawn,          {.v = audioPrev } },
-	{ 0,                     XF86XK_AudioPlay,spawn,          {.v = audioPlay } },
-	{ 0,                     XF86XK_AudioStop, spawn,          {.v = audioStop } },
-	/* { 0,                     XF86XK_AudioPause,spawn,          {.v = audioPause } }, */
-	/* { MODKEY|ControlMask,           XK_Return, spawn,          {.v = termurxvt } }, */
-	/* { 0,                     XF86XK_AudioNext, spawn,          {.v = mpdnextcmd } }, */
-	{ MODKEY,                XK_Right,         spawn,          {.v = mpdnextcmd } },
-	/* { 0,                     XF86XK_AudioPrev, spawn,          {.v = mpdprevcmd } }, */
-	{ MODKEY,                XK_Left,          spawn,          {.v = mpdprevcmd } },
-	/* { 0,                     XF86XK_AudioPlay, spawn,          {.v = mpdtogglecmd } }, */
-	{ MODKEY,                XK_Up,            spawn,          {.v = mpdtogglecmd } },
-	/* { 0,                     XF86XK_AudioStop, spawn,          {.v = mpdstopcmd } }, */
-	{ MODKEY,                   XK_Down,       spawn,          {.v = mpdstopcmd } },
-	{ MODKEY|AltMask,            XK_Up,       spawn,          {.v = mpdstartcmd } },
-	{ MODKEY|AltMask,            XK_Down,     spawn,          {.v = mpdkillcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
