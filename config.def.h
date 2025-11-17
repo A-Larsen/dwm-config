@@ -80,6 +80,8 @@ static const char *termcmd[]  = {"/usr/bin/alacritty", NULL};
 static const char *voldowncmd[]  = { "dwm_set_volume_down" , NULL };
 static const char *flameshotcmd[]  = { "flameshot", "gui", NULL };
 static const char *speedcmd[]  = { "systemctl", "suspend", NULL };
+static const char *keylayout1[]  = { "xmodmap", "/home/nyquist/.config/xmodmap/original", NULL };
+static const char *keylayout2[]  = { "xmodmap", "/home/nyquist/.config/xmodmap/caps_ctrl_swap", NULL };
 
 #include "movestack.c"
 
@@ -89,6 +91,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_s,      spawn,          {.v = flameshotcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ControlMask,           XK_q,      spawn,          {.v = keylayout1 } },
+	{ MODKEY|ControlMask,           XK_w,      spawn,          {.v = keylayout2 } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
