@@ -68,13 +68,19 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *flameshotcmd[]  = { "flameshot", "gui", NULL };
 static const char *suscmd[]  = { "systemctl", "suspend", NULL };
+static const char *volupcmd[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+10%", NULL };
+static const char *voldowncmd[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-10%", NULL };
+static const char *volmutecmd[]  = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ControlMask,           XK_s,      spawn,          {.v = flameshotcmd } },
-	{ MODKEY,                       XK_F1,      spawn,          {.v = suscmd } },
+	{ MODKEY,                       XK_F12,      spawn,          {.v = suscmd } },
+	{ MODKEY,                       XK_F1,      spawn,          {.v = voldowncmd } },
+	{ MODKEY,                       XK_F2,      spawn,          {.v = volupcmd } },
+	{ MODKEY,                       XK_F3,      spawn,          {.v = volmutecmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
