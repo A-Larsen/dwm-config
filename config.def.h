@@ -68,9 +68,9 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *flameshotcmd[]  = { "flameshot", "gui", NULL };
 static const char *suscmd[]  = { "systemctl", "suspend", NULL };
-static const char *volupcmd[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+10%", NULL };
-static const char *voldowncmd[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-10%", NULL };
-static const char *volmutecmd[]  = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
+static const char *volupcmd[]  = { "/usr/local/bin/dwm_volume_up", NULL };
+static const char *voldowncmd[]  = { "/usr/local/bin/dwm_volume_down", NULL };
+static const char *volmutecmd[]  = { "/usr/local/bin/dwm_volume_mute", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
