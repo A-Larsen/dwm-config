@@ -677,8 +677,8 @@ createmon(void)
 		m->pertag->sellts[i] = m->sellt;
 
 		m->pertag->showbars[i] = m->showbar;
-		m->tags[i] = malloc(MAX_TAGLEN);
-		memset(m->tags[i], 0, MAX_TAGLEN);
+		m->tags[i] = malloc(MAX_TAGLEN + 1);
+		memset(m->tags[i], 0, MAX_TAGLEN + 1);
 		memcpy(m->tags[i], tags[i], MAX_TAGLEN);
 	}
 	return m;
