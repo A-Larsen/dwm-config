@@ -35,6 +35,8 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+    // Keep ffplay floating a and in all tags for facecam script
+	{  NULL,      NULL,       "facecam",  (1 << 9)-1,   1,           -1 },
 };
 
 /* layout(s) */
