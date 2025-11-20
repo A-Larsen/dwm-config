@@ -32,11 +32,12 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class          instance    title          tags mask    isfloating   monitor */
     // Keep ffplay floating a and in all tags for facecam script
-	{  NULL,      NULL,       "facecam",  (1 << 9)-1,   1,           -1 },
+	{  NULL,          NULL,       "facecam",     (1 << 9)-1,   1,          1 },
+	{  NULL,          NULL,       "pulsemixer",  (1 << 9)-1,   1,          1 },
+	{  NULL,          NULL,       "htop",        (1 << 9)-1,   1,          1 },
+	{  "speedcrunch", NULL,        NULL,         (1 << 9)-1,   1,          1 },
 };
 
 /* layout(s) */
@@ -73,16 +74,22 @@ static const char *suscmd[]  = { "systemctl", "suspend", NULL };
 static const char *volupcmd[]  = { "/usr/local/bin/dwm_volume_up", NULL };
 static const char *voldowncmd[]  = { "/usr/local/bin/dwm_volume_down", NULL };
 static const char *volmutecmd[]  = { "/usr/local/bin/dwm_volume_mute", NULL };
+static const char *mixercmd[]  = { "/usr/local/bin/pannel-audio-mixer", NULL };
+static const char *calccmd[]  = { "/usr/local/bin/speedcrunch-launch", NULL };
+static const char *cpucmd[]  = { "/usr/local/bin/pannel-cpu-usage", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ControlMask,           XK_s,      spawn,          {.v = flameshotcmd } },
-	{ MODKEY,                       XK_F12,      spawn,          {.v = suscmd } },
-	{ MODKEY,                       XK_F1,      spawn,          {.v = voldowncmd } },
-	{ MODKEY,                       XK_F2,      spawn,          {.v = volupcmd } },
-	{ MODKEY,                       XK_F3,      spawn,          {.v = volmutecmd } },
+	{ MODKEY,                       XK_F12,      spawn,        {.v = suscmd } },
+	{ MODKEY,                       XK_F1,      spawn,         {.v = mixercmd } },
+	{ MODKEY,                       XK_F2,      spawn,         {.v = voldowncmd } },
+	{ MODKEY,                       XK_F3,      spawn,         {.v = volupcmd } },
+	{ MODKEY,                       XK_F4,      spawn,         {.v = volmutecmd } },
+	{ MODKEY|ShiftMask,             XK_m,       spawn,         {.v = cpucmd } },
+	{ MODKEY|ShiftMask,             XK_e,       spawn,         {.v = calccmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
