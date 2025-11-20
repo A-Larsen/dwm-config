@@ -32,12 +32,15 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class          instance    title          tags mask    isfloating   monitor */
+	/* class          instance    title          tags mask       isfloating  monitor */
     // Keep ffplay floating a and in all tags for facecam script
-	{  NULL,          NULL,       "facecam",     (1 << 9)-1,   1,          1 },
-	{  NULL,          NULL,       "pulsemixer",  (1 << 9)-1,   1,          1 },
-	{  NULL,          NULL,       "htop",        (1 << 9)-1,   1,          1 },
-	{  "speedcrunch", NULL,        NULL,         (1 << 9)-1,   1,          1 },
+	{  NULL,              NULL,       "facecam",     (1<<9)-1,   1,         -1 },
+	{  NULL,              NULL,       "pulsemixer",  (1<<9)-1,   1,         -1 },
+	{  NULL,              NULL,       "htop",        (1<<9)-1,   1,         -1 },
+	{  NULL,              NULL,       "Alacritty",   1 << 0,     0,         -1 },
+	{  "Brave",           NULL,        NULL,         1 << 1,     0,         -1 },
+	{  "KeePassXC",       NULL,        NULL,         1 << 2,     0,         -1 },
+	{  "SpeedCrunch",     NULL,        NULL,        (1<<9)-1,    1,         -1 },
 };
 
 /* layout(s) */
@@ -68,7 +71,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "alacritty", "--title", "Alacritty", NULL };
 static const char *flameshotcmd[]  = { "flameshot", "gui", NULL };
 static const char *suscmd[]  = { "systemctl", "suspend", NULL };
 static const char *volupcmd[]  = { "/usr/local/bin/dwm_volume_up", NULL };
@@ -83,13 +86,13 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ControlMask,           XK_s,      spawn,          {.v = flameshotcmd } },
-	{ MODKEY,                       XK_F12,      spawn,        {.v = suscmd } },
-	{ MODKEY,                       XK_F1,      spawn,         {.v = mixercmd } },
-	{ MODKEY,                       XK_F2,      spawn,         {.v = voldowncmd } },
-	{ MODKEY,                       XK_F3,      spawn,         {.v = volupcmd } },
-	{ MODKEY,                       XK_F4,      spawn,         {.v = volmutecmd } },
-	{ MODKEY|ShiftMask,             XK_m,       spawn,         {.v = cpucmd } },
-	{ MODKEY|ShiftMask,             XK_e,       spawn,         {.v = calccmd } },
+	{ MODKEY,                       XK_F12,    spawn,          {.v = suscmd } },
+	{ MODKEY,                       XK_F1,     spawn,          {.v = mixercmd } },
+	{ MODKEY,                       XK_F2,     spawn,          {.v = voldowncmd } },
+	{ MODKEY,                       XK_F3,     spawn,          {.v = volupcmd } },
+	{ MODKEY,                       XK_F4,     spawn,          {.v = volmutecmd } },
+	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = cpucmd } },
+	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = calccmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
