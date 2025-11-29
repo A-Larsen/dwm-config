@@ -25,7 +25,7 @@ static const char *colors[][3]      = {
 #define MAX_TAGNAME_LEN 14		/* excludes TAG_PREPEND */
 #define TAG_PREPEND "%1i:"		/* formatted as 2 chars */
 #define MAX_TAGLEN 16			/* altogether */
-static char tags[][MAX_TAGLEN] = { "1:dev", "2:web", "3:tools", "4:discord", "5:misc"};
+static char tags[][MAX_TAGLEN] = { "1:main", "2:web", "3:tools", "4:discord", "5:misc"};
 
 static const Rule rules[] = {
 	/* xprop(1):
