@@ -83,8 +83,7 @@ static const char *volmutecmd[]  = { "/usr/local/bin/dwm_volume_mute", NULL };
 static const char *mixercmd[]  = { "/usr/local/bin/pannel-audio-mixer", NULL };
 static const char *calccmd[]  = { "/usr/local/bin/speedcrunch-launch", NULL };
 static const char *cpucmd[]  = { "/usr/local/bin/pannel-cpu-usage", NULL };
-static const char *nightoncmd[]  = { "redshift-launch", NULL };
-static const char *nightoffcmd[]  = { "redshift", "-x", NULL };
+static const char *brightnesscmd[]  = { "/usr/local/bin/brightness-launch", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -98,8 +97,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_F4,     spawn,          {.v = volmutecmd } },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = cpucmd } },
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = calccmd } },
-	{ MODKEY,                       XK_r,      spawn,          {.v = nightoncmd } },
-	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = nightoffcmd } },
+	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = brightnesscmd} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
