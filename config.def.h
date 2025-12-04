@@ -37,7 +37,8 @@ static const Rule rules[] = {
 	{  NULL,              NULL,       "facecam",     (1<<9)-1,   1,         -1 },
 	{  NULL,              NULL,       "pulsemixer",  (1<<9)-1,   1,         -1 },
 	{  NULL,              NULL,       "htop",        (1<<9)-1,   1,         -1 },
-	{  NULL,              NULL,       "Alacritty",   1 << 0,     0,         -1 },
+    // there is a possibility to need a terminal in misc tag as well..
+	// {  NULL,              NULL,       "Alacritty",   1 << 0,     0,         -1 },
 	{  "Brave",           NULL,        NULL,         1 << 1,     0,         -1 },
 	{  "Gimp",            NULL,        NULL,         1 << 2,     0,         -1 },
 	{  "Discord",         NULL,        NULL,         1 << 3,     0,         -1 },
