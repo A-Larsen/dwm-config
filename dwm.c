@@ -666,13 +666,9 @@ createmon(void)
 	m->pertag = ecalloc(1, sizeof(Pertag));
 	m->pertag->curtag = m->pertag->prevtag = 1;
 
-    // + 1 for null terminator
-    unsigned int tag_size = MAX_TAGLEN + 1;
-    unsigned int total_size = tag_size * LENGTH(tags);
-    m->tags = malloc(total_size);
-    memset(m->tags, 0, total_size);
+    m->tags = ecalloc(LENGTH(tags), sizeof(char) * (MAX_TAGNAME_LEN + 1));
 
-	for (i = 0; i <= LENGTH(tags); i++) {
+	for (i = 0; i <= LENGTH(tags) ; i++) {
 		m->pertag->nmasters[i] = m->nmaster;
 		m->pertag->mfacts[i] = m->mfact;
 
@@ -681,10 +677,12 @@ createmon(void)
 		m->pertag->sellts[i] = m->sellt;
 
 		m->pertag->showbars[i] = m->showbar;
-		m->tags[i] = malloc(tag_size);
-        memset(m->tags[i], 0, tag_size);
-		memcpy(m->tags[i], tags[i], MAX_TAGLEN);
+		m->tags[i] = ecalloc(1, sizeof(char) * (MAX_TAGNAME_LEN + 1));
+		memset(m->tags[i], 0, MAX_TAGNAME_LEN);
+		memcpy(m->tags[i], tags[i], sizeof(char) * strlen(tags[i]));
 	}
+
+
 	return m;
 }
 
