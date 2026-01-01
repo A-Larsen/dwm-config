@@ -86,11 +86,15 @@ static const char *mixercmd[]  = { "/usr/local/bin/pannel-audio-mixer", NULL };
 static const char *calccmd[]  = { "/usr/local/bin/speedcrunch-launch", NULL };
 static const char *cpucmd[]  = { "/usr/local/bin/pannel-cpu-usage", NULL };
 static const char *brightnesscmd[]  = { "/usr/local/bin/brightness-launch", NULL };
+static const char *ffsrecstartcmd[]  = { "/usr/local/bin/ffsrec", NULL };
+static const char *ffsrecstopcmd[]  = { "killall", "ffmpeg", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = ffsrecstartcmd } },
+	{ MODKEY|ControlMask|ShiftMask, XK_r,      spawn,          {.v = ffsrecstopcmd } },
 	{ MODKEY|ControlMask,           XK_s,      spawn,          {.v = flameshotcmd } },
 	{ MODKEY,                       XK_F12,    spawn,          {.v = suscmd } },
 	{ MODKEY,                       XK_F1,     spawn,          {.v = mixercmd } },
