@@ -38,6 +38,7 @@ static const Rule rules[] = {
 	{  NULL,              NULL,       "facecam",     (1<<9)-1,   1,         -1 },
 	{  NULL,              NULL,       "pulsemixer",  (1<<9)-1,   1,         -1 },
 	{  NULL,              NULL,       "htop",        (1<<9)-1,   1,         -1 },
+	{  NULL,              NULL,       "youtube-upload",        (1<<9)-1,   1,         -1 },
     // there is a possibility to need a terminal in misc tag as well..
 	// {  NULL,              NULL,       "Alacritty",   1 << 0,     0,         -1 },
 	{  "Brave",           NULL,        NULL,         1 << 1,     0,         -1 },
@@ -87,7 +88,7 @@ static const char *calccmd[]  = { "/usr/local/bin/speedcrunch-launch", NULL };
 static const char *cpucmd[]  = { "/usr/local/bin/pannel-cpu-usage", NULL };
 static const char *brightnesscmd[]  = { "/usr/local/bin/brightness-launch", NULL };
 static const char *ffsrecstartcmd[]  = { "/usr/local/bin/ffsrec", NULL };
-static const char *ffsrecstopcmd[]  = { "killall", "ffmpeg", NULL };
+static const char *ffsrecstopcmd[]  = { "/usr/local/bin/ffsrec-stop-recording", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
