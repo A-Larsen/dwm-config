@@ -89,6 +89,8 @@ static const char *cpucmd[]  = { "/usr/local/bin/pannel-cpu-usage", NULL };
 static const char *brightnesscmd[]  = { "/usr/local/bin/brightness-launch", NULL };
 static const char *ffsrecstartcmd[]  = { "/usr/local/bin/ffsrec", NULL };
 static const char *ffsrecstopcmd[]  = { "/usr/local/bin/ffsrec-stop-recording", NULL };
+static const char *wakeuponcmd[]  = { "/usr/local/bin/wake-up", "on", NULL };
+static const char *wakeupoffcmd[]  = { "/usr/local/bin/wake-up", "off", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -97,6 +99,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = ffsrecstartcmd } },
 	{ MODKEY|ControlMask|ShiftMask, XK_r,      spawn,          {.v = ffsrecstopcmd } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = flameshotcmd } },
+	{ MODKEY,                       XK_F10,    spawn,          {.v = wakeuponcmd } },
+	{ MODKEY,                       XK_F11,    spawn,          {.v = wakeupoffcmd } },
 	{ MODKEY,                       XK_F12,    spawn,          {.v = suscmd } },
 	{ MODKEY,                       XK_F1,     spawn,          {.v = mixercmd } },
 	{ MODKEY,                       XK_F2,     spawn,          {.v = voldowncmd } },
